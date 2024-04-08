@@ -14,5 +14,37 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
+    'indent': [
+      'error',
+      2,
+      {
+        'SwitchCase': 1
+      }
+    ],
+    'linebreak-style': [
+      'error',
+      'unix'
+    ],
+    '@typescript-eslint/no-explicit-any': 'warn',
+    'quotes': [
+      'error',
+      'single'
+    ],
+    'semi': [
+      'error',
+      'always'
+    ],
+    'react/prop-types': 'off',
+    'react/react-in-jsx-scope': 'off',
+    'space-before-function-paren': 'off',
+    'no-console': 'warn',
+    'comma-dangle': [
+      'error',
+      'always-multiline'
+    ],
+    'jsx-quotes': [
+      'error',
+      'prefer-double'
+    ]
   },
 }
