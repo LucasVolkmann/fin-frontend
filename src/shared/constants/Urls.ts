@@ -1,4 +1,4 @@
-const DEFAULT_BACKEND_URL = 'http://localhost:8080';
+const DEFAULT_BACKEND_URL = 'http://localhost:3030';
 
 export const URL_USER = `${DEFAULT_BACKEND_URL}/user`;
 

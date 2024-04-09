@@ -11,14 +11,16 @@ export const Container = styled.div`
 `;
 
 export const LoginForm = styled.div`
-  width: 500px;
+  width: 350px;
 
   box-sizing: border-box;
 
   input {
-    width: 80%;
+    width: 100%;
     padding: 10px;
     border: 1px solid gray;
     margin-bottom: 30px;
+
+    box-sizing: border-box;
   }
 `;
