@@ -14,7 +14,7 @@ export default class ConnectionAPI {
   static async call<T>(url: string, method: MethodsEnum, body?: unknown): Promise<T> {
     const config: AxiosRequestConfig = {
       headers: {
-        Authorization: getAuthorizationToken(),
+        Authorization: `Bearer ${getAuthorizationToken()}`,
         'Content-Type': 'application/json',
       },
     };

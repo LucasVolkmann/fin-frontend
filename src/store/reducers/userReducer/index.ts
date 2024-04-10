@@ -14,12 +14,12 @@ export const counterSlice = createSlice({
   name: 'userReducer',
   initialState,
   reducers: {
-    setUsersAction: (state, action: PayloadAction<UserType>) => {
+    setUserAction: (state, action: PayloadAction<UserType>) => {
       state.user = action.payload;
     },
   },
 });
 
-export const { setUsersAction } = counterSlice.actions;
+export const { setUserAction } = counterSlice.actions;
 
 export default counterSlice.reducer;

@@ -2,26 +2,26 @@ import type { Router as RemixRouter } from '@remix-run/router';
 import { RouteObject, RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { loginRouter } from './modules/login/routes';
 import { mainRouter } from './modules/main/routes';
+import { verifyLoggedIn } from './shared/functions/connection/auth';
 
 const freeRoutes: RouteObject[] = [
   ...loginRouter,
-  ...mainRouter,
 ];
 
-// const loggedInRoutes: RouteObject[] = [
-//   ...userRoutes,
-//   ...mainRoutes,
-// ].map((route) => ({
-//   ...route,
-//   loader: verifyLoggedIn,
-// }));
+const loggedInRoutes: RouteObject[] = [
+  ...mainRouter,
+].map((route) => ({
+  ...route,
+  loader: verifyLoggedIn,
+}));
 
 const router: RemixRouter = createBrowserRouter([
   ...freeRoutes,
-  // ...loggedInRoutes,
+  ...loggedInRoutes,
 ]);
 
 function App() {
+
   return <>
     <RouterProvider router={router}/>
   </>;

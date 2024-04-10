@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useUserReducer } from '../../../store/reducers/userReducer/useUserReducer';
 import { useNavigate } from 'react-router-dom';
-import { MainRoutesEnum } from '../../main/routes';
 import { auth } from '../../../shared/functions/connection/auth';
 
 type InputAttribute = 'email' | 'password'; 
@@ -16,12 +15,6 @@ export const useLogin = () => {
   const [wrongCredentials, setWrongCredentials] = useState(false);
   const {user, setUser} = useUserReducer();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (user) {
-      navigate(MainRoutesEnum.MAIN);
-    }
-  });
 
   useEffect(() => {
     if (credentials.email && credentials.password) {

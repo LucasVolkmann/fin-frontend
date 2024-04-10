@@ -1,17 +1,10 @@
 import { useState } from 'react';
-import { NavigateFunction } from 'react-router-dom';
 
-import { URL_AUTH } from '../constants/Urls';
 import { MethodsEnum } from '../enumerations/methods.enum';
-import { setAuthorizationToken } from '../functions/connection/auth';
-import ConnectionAPI, { connectionAPI_POST } from '../functions/connection/connectionAPI';
-import { AuthType } from '../types/AuthType';
-import { useUserReducer } from '../../store/reducers/userReducer/useUserReducer';
-import { MainRoutesEnum } from '../../modules/main/routes';
+import ConnectionAPI from '../functions/connection/connectionAPI';
 
 export const useRequests = () => {
   const [loading, setLoading] = useState(false);
-  const {setUser} = useUserReducer();
   // const navigate = useNavigate();
 
   const request = async <T>(
@@ -38,29 +31,8 @@ export const useRequests = () => {
     return response;
   };
 
-  const authRequest = async (navigate: NavigateFunction, body: any): Promise<void> => {
-    setLoading(true);
-    await connectionAPI_POST<AuthType>(URL_AUTH, body)
-      .then((result) => {
-        if (result.accessToken) {
-          setUser(result.user);
-          setAuthorizationToken(result.accessToken);
-        } else {
-          throw new Error('Server error.');
-        }
-        navigate(MainRoutesEnum.MAIN);
-        return;
-      })
-      .catch(() => {
-        //FIXME: handle this
-        return;
-      });
-    setLoading(false);
-  };
-
   return {
     loading,
     request,
-    authRequest,
   };
 };
