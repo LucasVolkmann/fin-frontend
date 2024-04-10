@@ -8,11 +8,12 @@ type InputAttribute = 'email' | 'password';
 export const useLogin = () => {
   const [credentials, setCredentials] = useState({
     //FIXME:
-    email: 'lucas@email.com',
-    password: 'test123',
+    // email: 'lucas@email.com',
+    // password: 'test123',
+    email: '',
+    password: '',
   });
   const [disableButton, setDisableButton] = useState(true);
-  const [wrongCredentials, setWrongCredentials] = useState(false);
   const {user, setUser} = useUserReducer();
   const navigate = useNavigate();
 
@@ -29,8 +30,6 @@ export const useLogin = () => {
     if (user) {
       setUser(user);
       navigate('/');
-    } else {
-      setWrongCredentials(true);
     }
   };
 
@@ -44,7 +43,6 @@ export const useLogin = () => {
 
   return {
     disableButton,
-    wrongCredentials,
     credentials,
     handleOnChangeLoginInput,
     handleOnClickLoginButton,

@@ -1,22 +1,55 @@
+import { ChangeEvent } from 'react';
 import { useLogin } from '../hooks/useLogin';
-import { Container, LoginForm } from '../styles/LoginScreen.styles';
+import { Container, FormContainer, ImageContainer, InputBox, LoginForm } from '../styles/LoginScreen.styles';
+import { LockFilled, UserOutlined } from '@ant-design/icons';
+import LoginInputEmail from '../components/LoginInputEmail';
+import LoginInputPassword from '../components/LoginInputPassword';
+import LoginButton from '../components/LoginButton';
+import HelloCard from '../components/HelloCard';
+import MainContent from '../components/MainContent';
 
 const LoginScreen = () => {
   const {
-    disableButton,
     credentials,
     handleOnChangeLoginInput,
-    handleOnClickLoginButton, 
-    wrongCredentials,
+    handleOnClickLoginButton,
   } = useLogin();
 
   return (
     <Container>
-      <LoginForm style={wrongCredentials? {border: '2px solid red'} : {}}>
-        <input type="email" placeholder="E-mail" value={credentials.email} onChange={(e) => handleOnChangeLoginInput(e, 'email')}/>
-        <input type="password" placeholder="Senha" value={credentials.password} onChange={(e) => handleOnChangeLoginInput(e, 'password')}/>
-        <input disabled={disableButton} type="button" value="Entrar" onClick={handleOnClickLoginButton}/>
-      </LoginForm>
+
+      <ImageContainer>
+        <MainContent />
+      </ImageContainer>
+      <FormContainer>
+        <LoginForm >
+          <HelloCard />
+          <InputBox>
+            <LoginInputEmail 
+              type="email" 
+              placeholder="E-mail" 
+              prefix={<UserOutlined style={{width: '24px', color: 'gray'}}/>}
+              value={credentials.email} 
+              onChange={(e: ChangeEvent<HTMLInputElement>) => handleOnChangeLoginInput(e, 'email')}
+            />
+          </InputBox>
+          <InputBox>
+            <LoginInputPassword
+              type="password" 
+              placeholder="Senha" 
+              prefix={<LockFilled style={{width: '24px', color: 'gray'}}/>}
+              value={credentials.password} 
+              onChange={(e: ChangeEvent<HTMLInputElement>) => handleOnChangeLoginInput(e, 'password')}
+            />
+          </InputBox>
+          <InputBox>
+            <LoginButton
+              onClick={handleOnClickLoginButton}
+              style={{border: 'none'}}
+            />
+          </InputBox>
+        </LoginForm>
+      </FormContainer>
     </Container>
   );
 };

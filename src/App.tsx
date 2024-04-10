@@ -3,6 +3,7 @@ import { RouteObject, RouterProvider, createBrowserRouter } from 'react-router-d
 import { loginRouter } from './modules/login/routes';
 import { mainRouter } from './modules/main/routes';
 import { verifyLoggedIn } from './shared/functions/connection/auth';
+import { ConfigProvider } from 'antd';
 
 const freeRoutes: RouteObject[] = [
   ...loginRouter,
@@ -22,9 +23,17 @@ const router: RemixRouter = createBrowserRouter([
 
 function App() {
 
-  return <>
-    <RouterProvider router={router}/>
-  </>;
+  return (
+    <ConfigProvider
+      theme={{
+        token: {
+          colorPrimary: '#6FCA14',
+        },
+      }}
+    >
+      <RouterProvider router={router}/>
+    </ConfigProvider>
+  );
 }
 
 export default App;
