@@ -10,47 +10,56 @@ import MainContent from '../components/MainContent';
 
 const LoginScreen = () => {
   const {
+    loading,
     credentials,
+    contextHolder,
+    emailStatus,
+    passwordStatus,
     handleOnChangeLoginInput,
     handleOnClickLoginButton,
   } = useLogin();
 
   return (
-    <Container>
-
-      <ImageContainer>
-        <MainContent />
-      </ImageContainer>
-      <FormContainer>
-        <LoginForm >
-          <HelloCard />
-          <InputBox>
-            <LoginInputEmail 
-              type="email" 
-              placeholder="E-mail" 
-              prefix={<UserOutlined style={{width: '24px', color: 'gray'}}/>}
-              value={credentials.email} 
-              onChange={(e: ChangeEvent<HTMLInputElement>) => handleOnChangeLoginInput(e, 'email')}
-            />
-          </InputBox>
-          <InputBox>
-            <LoginInputPassword
-              type="password" 
-              placeholder="Senha" 
-              prefix={<LockFilled style={{width: '24px', color: 'gray'}}/>}
-              value={credentials.password} 
-              onChange={(e: ChangeEvent<HTMLInputElement>) => handleOnChangeLoginInput(e, 'password')}
-            />
-          </InputBox>
-          <InputBox>
-            <LoginButton
-              onClick={handleOnClickLoginButton}
-              style={{border: 'none'}}
-            />
-          </InputBox>
-        </LoginForm>
-      </FormContainer>
-    </Container>
+    <>
+      {contextHolder}
+      <Container>
+        <ImageContainer>
+          <MainContent />
+        </ImageContainer>
+        <FormContainer>
+          <LoginForm >
+            <HelloCard />
+            <InputBox>
+              <LoginInputEmail 
+                type="email" 
+                status={emailStatus}
+                placeholder="E-mail" 
+                prefix={<UserOutlined style={{width: '24px', color: 'gray'}}/>}
+                value={credentials.email} 
+                onChange={(e: ChangeEvent<HTMLInputElement>) => handleOnChangeLoginInput(e, 'email')}
+              />
+            </InputBox>
+            <InputBox>
+              <LoginInputPassword
+                type="password" 
+                status={passwordStatus}
+                placeholder="Senha" 
+                prefix={<LockFilled style={{width: '24px', color: 'gray'}}/>}
+                value={credentials.password} 
+                onChange={(e: ChangeEvent<HTMLInputElement>) => handleOnChangeLoginInput(e, 'password')}
+              />
+            </InputBox>
+            <InputBox>
+              <LoginButton
+                loading={loading}
+                onClick={handleOnClickLoginButton}
+                style={{border: 'none'}}
+              />
+            </InputBox>
+          </LoginForm>
+        </FormContainer>
+      </Container>
+    </>
   );
 };
 

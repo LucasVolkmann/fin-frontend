@@ -43,7 +43,6 @@ export const FormContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 10;
 
   right: 0px;
   position: absolute;

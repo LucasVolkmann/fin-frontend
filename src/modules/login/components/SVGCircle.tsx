@@ -6,7 +6,7 @@ const SVGCircle = ({...props}) => {
       xmlns="https://www.w3.org/2000/svg"
       {...props}
     >
-      <circle cx="60" cy="60" r="50" fill="none" stroke="#FB971E" stroke-width="0.5"/>
+      <circle cx="60" cy="60" r="50" fill="none" stroke="#FB971E" strokeWidth="0.5"/>
     </svg>
   );
 };
