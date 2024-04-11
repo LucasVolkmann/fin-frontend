@@ -36,11 +36,12 @@ Este é um app para controle de finança pessoais. Onde cada usuário pode criar
 #### Figma:
 - [Link do Projeto](https://www.figma.com/file/208IaPYLyovn7Nx6BhN3Xj/Projeto-Lucas?type=design&node-id=0-1&mode=design&t=xFkeAdnRaoqCbPnK-0)
 - Tela de login:
-![Tela de login](docs/FigmaLoginPage.png)
+- ![Tela de login](docs/FigmaLoginPage.PNG)
 - Tela Principal:
-![Tela principal](docs/FigmaMainPage.png)
+- ![Tela principal](docs/FigmaMainPage.PNG)
 - Popup de Atualização dos dados de uma Transação:
-![Tela de login](docs/FigmaUpdatePopUp.png)
+- ![Tela de login](docs/FigmaUpdatePopUp.PNG)
+
 
 
 
