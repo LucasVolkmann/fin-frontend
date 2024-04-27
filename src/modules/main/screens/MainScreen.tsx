@@ -3,6 +3,8 @@ import { useUserReducer } from '../../../store/reducers/userReducer/useUserReduc
 import { useRequests } from '../../../shared/hooks/useRequests';
 import { URL_USER } from '../../../shared/constants/Urls';
 import { MethodsEnum } from '../../../shared/enumerations/methods.enum';
+import Screen from '../../../shared/components/screen/Screen';
+import { PagesEnum } from '../../../shared/components/screen/shared/PagesEnum';
 
 const MainScreen = () => {
   const {user, setUser} = useUserReducer();
@@ -14,7 +16,13 @@ const MainScreen = () => {
     }
   });
 
-  return <a>Olá, {user?.username}</a>;
+  return (
+    <Screen
+      currentPage={PagesEnum.DASHBOARD}
+    >
+      <a>MAIN CONTENT</a>
+    </Screen>
+  );
 };
 
 export default MainScreen;
