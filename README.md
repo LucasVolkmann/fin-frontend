@@ -1,30 +1,48 @@
-# React + TypeScript + Vite
+# Um projeto pessoal para consolidar as minhas habilidades em desenvolvimento web.
+Descrição do projeto: Um app simples para controlar finanças pessoais.
+- Este é o repositório do front-end do projeto.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- Em conjunto com: **Tatiana dos Santos** [( Linkedin )](https://www.linkedin.com/in/tatianadossantos/)
+  - Para simular levemente um processo de produção, as telas foram definidas primeiramente no Figma.
+  - Tatiana é especialista em UI/UX e fez todo o design do projeto.
 
-Currently, two official plugins are available:
+---
+### Sumário:
+1. Links
+2. Tecnologias utilizadas
+3. Descrição detalhada
+4. Figma
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
+#### Links:
+- [[ Repositório do backend ]](https://github.com/LucasVolkmann/fin-backend)
+- [ Url do backend (ainda não implementado) ]
+- [[ Repositório do frontend ]](https://github.com/LucasVolkmann/fin-frontend)
+- [ Url do frontend (ainda não implementado) ]
 
-## Expanding the ESLint configuration
+---
+#### Tecnologias utilizadas:
+- Linguagem principal: **TypeScript**
+- Lib: **React**
+- **Vite**
+- UI Lib: **Ant Design**
+- **Redux**
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+---
+#### Descrição detalhada:
+Este é um app para controle de finança pessoais. Onde cada usuário pode criar uma conta. Cada conta pode adicionar e remover transações. Cada transação tem uma categoria.
 
-- Configure the top-level `parserOptions` property like this:
+---
+#### Figma:
+- [Link do Projeto](https://www.figma.com/file/208IaPYLyovn7Nx6BhN3Xj/Projeto-Lucas?type=design&node-id=0-1&mode=design&t=xFkeAdnRaoqCbPnK-0)
+- Tela de login:
+- ![Tela de login](docs/FigmaLoginPage.PNG)
+- Tela Principal:
+- ![Tela principal](docs/FigmaMainPage.PNG)
+- Popup de Atualização dos dados de uma Transação:
+- ![Tela de login](docs/FigmaUpdatePopUp.PNG)
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+
+
+
