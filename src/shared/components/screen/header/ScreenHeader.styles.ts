@@ -8,3 +8,17 @@ export const Container = styled.div`
 
   float: right;
 `;
+
+export const GreetingContainer = styled.div`
+  width: fit-content;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+`;
+
+export const Greeting = styled.span`
+  font-family: Inter;
+  font-weight: 500;
+  font-size: 23px;
+`;
