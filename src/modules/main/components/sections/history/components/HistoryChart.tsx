@@ -20,17 +20,26 @@ const monthsArray = [
 interface HistoryChartProps {
   historyLength: number
 }
-
 interface DatasetHistoryIndexType {
   [key: string]: number | string;
 }
-
 interface DatasetHistory extends DatasetHistoryIndexType {
   incomes: number,
   expenses: number,
   year: number,
   month: string,
 }
+
+const valueFormatter = (value: number | null) => {
+  const removeCommaValue = String(value).replace(',', '');
+  const replacePointValue = removeCommaValue.replace('.', ',');
+  const commaIndex = replacePointValue.indexOf(',');
+  if (commaIndex > 0) {
+    return `R$ ${replacePointValue.slice(0, commaIndex + 3)}`;
+  } else {
+    return `R$ ${replacePointValue},00`;
+  }
+};
 
 const HistoryChart = ({historyLength}: HistoryChartProps) => {
 
@@ -48,10 +57,6 @@ const HistoryChart = ({historyLength}: HistoryChartProps) => {
     });
     setDisplayData(formatDisplayData);
   }, [historyLength, historyData]);
-  
-  const chartSetting = {
-    height: 300,
-  };
 
   return (
     <div style={{width: '100%', marginTop: '15px'}}>
@@ -60,12 +65,19 @@ const HistoryChart = ({historyLength}: HistoryChartProps) => {
         xAxis={[{ 
           scaleType: 'band',
           dataKey: 'month',
-          categoryGapRatio: 0.2,
-          barGapRatio: 0.5 ,
         }]}
         series={[
-          { dataKey: 'incomes', label: 'Receitas', color: '#6FCB14' },
-          { dataKey: 'expenses', label: 'Despesas', color: '#8B8999' },
+          { 
+            dataKey: 'incomes', 
+            label: 'Receitas', 
+            color: '#6FCB14', 
+            valueFormatter: valueFormatter,
+          },
+          { dataKey: 'expenses', 
+            label: 'Despesas', 
+            color: '#8B8999', 
+            valueFormatter: valueFormatter,
+          },
         ]}
         grid={{ 
           horizontal: true,
@@ -95,7 +107,7 @@ const HistoryChart = ({historyLength}: HistoryChartProps) => {
             fontSize: 14,
           },
         }}
-        {...chartSetting}
+        height={300}
       />
     </div>
   );

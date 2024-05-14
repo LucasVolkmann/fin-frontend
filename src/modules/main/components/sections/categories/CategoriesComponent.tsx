@@ -1,12 +1,11 @@
 import { CardTitle } from '../sections.styles';
+import CategoryChart from './components/CategoryChart';
 
 const CategoriesComponent = () => {
   return (
     <>
       <CardTitle>Visão por categoria</CardTitle>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, veniam.
-      </p>
+      <CategoryChart />
     </>
   );
 };
