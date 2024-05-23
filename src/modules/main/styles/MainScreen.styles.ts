@@ -13,11 +13,12 @@ export const RootContainer = styled.div`
 
 export const HistorySection = styled(CommonCard)`
   width: 37.5%;
-  min-width: 400px;
+  min-width: 500px;
 `;
 
 export const CategoriesSection = styled(CommonCard)`
   width: 57.5%;
+  min-width: 500px;
 `;
 
 export const TransactionListSection = styled(CommonCard)`

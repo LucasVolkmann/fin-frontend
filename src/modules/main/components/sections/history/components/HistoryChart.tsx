@@ -1,6 +1,7 @@
 import { BarChart } from '@mui/x-charts';
 import { useEffect, useState } from 'react';
 import { useHistoryChart } from './hooks/useHistoryChart';
+import { valueFormatter } from '../../../../../../shared/functions/formatters';
 
 const monthsArray = [
   'Janeiro',
@@ -29,17 +30,6 @@ interface DatasetHistory extends DatasetHistoryIndexType {
   year: number,
   month: string,
 }
-
-const valueFormatter = (value: number | null) => {
-  const removeCommaValue = String(value).replace(',', '');
-  const replacePointValue = removeCommaValue.replace('.', ',');
-  const commaIndex = replacePointValue.indexOf(',');
-  if (commaIndex > 0) {
-    return `R$ ${replacePointValue.slice(0, commaIndex + 3)}`;
-  } else {
-    return `R$ ${replacePointValue},00`;
-  }
-};
 
 const HistoryChart = ({historyLength}: HistoryChartProps) => {
 
@@ -87,6 +77,9 @@ const HistoryChart = ({historyLength}: HistoryChartProps) => {
             clipPath: 'inset(0px round 50px 50px 0px 0px)',
           },
           legend: {
+            labelStyle: {
+              fontSize: 18,
+            },
             itemMarkWidth: 20,
             itemMarkHeight: 10,
             markGap: 10,
