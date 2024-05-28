@@ -1,5 +1,5 @@
 import { Table, TableColumnsType } from 'antd';
-import { CategoryNumbers } from '../../../../../../shared/types/CategoryNumbers';
+import { CategoryNumbersType } from '../../../../../../shared/types/CategoryNumbersType';
 
 const columns: TableColumnsType = [
   {
@@ -12,7 +12,7 @@ const columns: TableColumnsType = [
   },
 ];
 
-const data: CategoryNumbers[] = [
+const data: CategoryNumbersType[] = [
   {
     name: 'Viagens',
     amount: 3200,
