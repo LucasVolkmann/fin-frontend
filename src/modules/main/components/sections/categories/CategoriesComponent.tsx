@@ -1,20 +1,25 @@
-import { CardTitle } from '../sections.styles';
-import { ChartContainer, DataContainer, NumbersContainer } from './CategoriesComponent.styles';
+import { ChartContainer, Container, GridContainer, GridTitle, RightContainer } from './CategoriesComponent.styles';
 import CategoryChart from './components/CategoryChart';
 import CategoryGrid from './components/CategoryGrid';
+import { CardTitle } from '../sections.styles';
 
 const CategoriesComponent = () => {
   return (
     <>
-      <CardTitle>Gastos do mês por categoria</CardTitle>
-      <DataContainer>
-        <ChartContainer>
-          <CategoryChart />
-        </ChartContainer>
-        <NumbersContainer>
-          <CategoryGrid />
-        </NumbersContainer>
-      </DataContainer>
+      <Container>
+        <div>
+          <CardTitle>Gastos do mês por categoria</CardTitle>
+          <ChartContainer>
+            <CategoryChart />
+          </ChartContainer>
+        </div>
+        <RightContainer>
+          <GridTitle>Histórico de gastos por categoria</GridTitle>
+          <GridContainer>
+            <CategoryGrid />
+          </GridContainer>
+        </RightContainer>
+      </Container>
     </>
   );
 };
