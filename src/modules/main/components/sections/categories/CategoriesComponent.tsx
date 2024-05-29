@@ -1,18 +1,30 @@
-import { ChartContainer, Container, GridContainer, GridTitle, RightContainer } from './CategoriesComponent.styles';
+import { useEffect } from 'react';
+import { ChartContainer, ChartTitle, Container, GridContainer, GridTitle, LeftContainer, RightContainer } from './CategoriesComponent.styles';
 import CategoryChart from './components/CategoryChart';
 import CategoryGrid from './components/CategoryGrid';
-import { CardTitle } from '../sections.styles';
+import { useRequests } from '../../../../../shared/hooks/useRequests';
+import { URL_CATEGORY_NUMBERS } from '../../../../../shared/constants/Urls';
+import { MethodsEnum } from '../../../../../shared/enumerations/methods.enum';
+import { useCategoryNumberReducer } from '../../../../../store/reducers/categoryNumberReducer/useCategoryNumberReducer';
 
 const CategoriesComponent = () => {
+
+  const { request } = useRequests();
+  const { setCategoryNumbers } = useCategoryNumberReducer();
+
+  useEffect(() => {
+    request(URL_CATEGORY_NUMBERS, MethodsEnum.GET, setCategoryNumbers);
+  }, []);
+
   return (
     <>
       <Container>
-        <div>
-          <CardTitle>Gastos do mês por categoria</CardTitle>
+        <LeftContainer>
+          <ChartTitle>Gastos do mês por categoria</ChartTitle>
           <ChartContainer>
             <CategoryChart />
           </ChartContainer>
-        </div>
+        </LeftContainer>
         <RightContainer>
           <GridTitle>Histórico de gastos por categoria</GridTitle>
           <GridContainer>

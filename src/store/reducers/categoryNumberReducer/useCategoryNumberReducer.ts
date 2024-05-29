@@ -9,6 +9,7 @@ export const useCategoryNumberReducer = () => {
   const { categoryNumbers } = useAppSelector((state) => state.categoryNumberReducer);
 
   const setCategoryNumbers = (categoryNumbers: CategorySummaryType) => {
+    categoryNumbers.generalCategoryNumbers.sort((cat1, cat2) => cat2.amount - cat1.amount);
     dispatch(setCategoryNumbersAction(categoryNumbers.generalCategoryNumbers));
   };
 

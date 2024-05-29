@@ -28,7 +28,20 @@ export const RightContainer = styled.div`
   row-gap: 20px;
 `;
 
+export const LeftContainer = styled.div`
+  min-width: 500px;
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+`;
+
 export const GridTitle = styled(CardTitle)`
+    width: 85%;
+    text-align: center;
+`;
+
+export const ChartTitle = styled(CardTitle)`
     width: 85%;
     text-align: center;
 `;

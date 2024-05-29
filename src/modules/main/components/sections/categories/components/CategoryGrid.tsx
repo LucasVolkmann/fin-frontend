@@ -1,8 +1,4 @@
 import { Table, TableColumnsType } from 'antd';
-import { useEffect } from 'react';
-import { useRequests } from '../../../../../../shared/hooks/useRequests';
-import { URL_CATEGORY_NUMBERS } from '../../../../../../shared/constants/Urls';
-import { MethodsEnum } from '../../../../../../shared/enumerations/methods.enum';
 import { useCategoryNumberReducer } from '../../../../../../store/reducers/categoryNumberReducer/useCategoryNumberReducer';
 
 const columns: TableColumnsType = [
@@ -17,13 +13,7 @@ const columns: TableColumnsType = [
 ];
 
 const CategoryGrid = () => {
-
-  const {request} = useRequests();
-  const { categoryNumbers, setCategoryNumbers } = useCategoryNumberReducer();
-
-  useEffect(() => {
-    request(URL_CATEGORY_NUMBERS, MethodsEnum.GET, setCategoryNumbers);
-  }, []);
+  const { categoryNumbers } = useCategoryNumberReducer();
 
   return (
     <>
