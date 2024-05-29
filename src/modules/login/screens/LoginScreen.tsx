@@ -1,4 +1,4 @@
-import { ChangeEvent } from 'react';
+import React, { ChangeEvent } from 'react';
 import { useLogin } from '../hooks/useLogin';
 import { Container, FormContainer, ImageContainer, InputBox, LoginForm } from '../styles/LoginScreen.styles';
 import { LockFilled, UserOutlined } from '@ant-design/icons';
@@ -19,6 +19,12 @@ const LoginScreen = () => {
     handleOnClickLoginButton,
   } = useLogin();
 
+  const handleFormKeyDown = (event: React.KeyboardEvent<HTMLFormElement>) => {
+    if (event.key == 'Enter') {
+      handleOnClickLoginButton();
+    }
+  };
+
   return (
     <>
       {contextHolder}
@@ -27,7 +33,7 @@ const LoginScreen = () => {
           <MainContent />
         </ImageContainer>
         <FormContainer>
-          <LoginForm >
+          <LoginForm onKeyDown={handleFormKeyDown}>
             <HelloCard />
             <InputBox>
               <LoginInputEmail 

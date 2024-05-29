@@ -19,7 +19,7 @@ const CategoryGrid = () => {
     <>
       <Table 
         columns={columns} 
-        dataSource={categoryNumbers} 
+        dataSource={categoryNumbers?.map((cat, i) => ({...cat, key: i}))}
         size="large" 
         pagination={false}
       />

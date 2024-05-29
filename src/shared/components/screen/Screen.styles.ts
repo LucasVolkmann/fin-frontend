@@ -3,15 +3,13 @@ import { HEADER_HEIGHT, MENU_WIDTH } from './shared/constants';
 
 export const ScreenContainer = styled.div`
   min-height: 100vh;
+
+  padding-left: ${MENU_WIDTH}px;
+
   background-color: #EEEDEB;
 `;
 
 export const ChildrenContainer = styled.div`
   box-sizing: border-box;
-  width: calc(100% - ${MENU_WIDTH}px);
   min-height: calc(100% - ${HEADER_HEIGHT}px);
-
-  position: fixed;
-  right: 0px;
-  top: ${HEADER_HEIGHT}px;
 `;

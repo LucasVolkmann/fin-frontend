@@ -13,7 +13,7 @@ interface ScreenProps{
 
 const Screen = ({children, currentPage, ...props }: ScreenProps) => {
   return (
-    <ScreenContainer {...props}>
+    <>
       <Menu options={[
         {
           name: 'Dashboard',
@@ -32,11 +32,13 @@ const Screen = ({children, currentPage, ...props }: ScreenProps) => {
           icon: <SVGConfig/>,
         },
       ]}/>
-      <ScreenHeader />
-      <ChildrenContainer>
-        {children}
-      </ChildrenContainer>
-    </ScreenContainer>
+      <ScreenContainer {...props}>
+        <ScreenHeader />
+        <ChildrenContainer>
+          {children}
+        </ChildrenContainer>
+      </ScreenContainer>
+    </>
   );
 };
 

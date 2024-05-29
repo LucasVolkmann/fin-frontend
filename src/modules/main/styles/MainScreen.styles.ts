@@ -2,8 +2,10 @@ import styled from 'styled-components';
 import { CommonCard } from '../components/sections/sections.styles';
 
 export const RootContainer = styled.div`
-  padding: 0px 36px;
   box-sizing: border-box;
+  
+  padding-right: 32px;
+  padding-bottom: 32px;
 
   display: flex;
   flex-wrap: wrap;
@@ -18,7 +20,7 @@ export const HistorySection = styled(CommonCard)`
 
 export const CategoriesSection = styled(CommonCard)`
   width: 57.5%;
-  min-width: 700px;
+  min-width: 800px;
 `;
 
 export const TransactionListSection = styled(CommonCard)`

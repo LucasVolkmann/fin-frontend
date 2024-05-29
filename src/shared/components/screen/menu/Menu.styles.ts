@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { MENU_WIDTH } from '../shared/constants';
 
 export const Container = styled.div`
-  height: 100vh;
+  min-height: 100vh;
   width: ${MENU_WIDTH}px;
   box-sizing: border-box;
   
@@ -12,7 +12,7 @@ export const Container = styled.div`
   justify-content: start;
   
   position: fixed;
-  `;
+`;
 
 export const IconContainer = styled.div`
   width: 60px;

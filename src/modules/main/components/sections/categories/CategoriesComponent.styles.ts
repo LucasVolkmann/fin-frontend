@@ -22,6 +22,8 @@ export const GridContainer = styled.div`
 `;
 
 export const RightContainer = styled.div`
+  min-width: 250px;
+
   display: flex;
   align-items: center;
   flex-direction: column;

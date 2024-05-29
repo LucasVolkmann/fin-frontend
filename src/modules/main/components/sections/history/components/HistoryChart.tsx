@@ -52,7 +52,7 @@ const HistoryChart = ({historyLength}: HistoryChartProps) => {
     <div style={{width: '100%', marginTop: '15px'}}>
       <BarChart
         dataset={displayData}
-        xAxis={[{ 
+        xAxis={[{
           scaleType: 'band',
           dataKey: 'month',
         }]}
@@ -63,7 +63,8 @@ const HistoryChart = ({historyLength}: HistoryChartProps) => {
             color: '#6FCB14', 
             valueFormatter: valueFormatter,
           },
-          { dataKey: 'expenses', 
+          { 
+            dataKey: 'expenses', 
             label: 'Despesas', 
             color: '#8B8999', 
             valueFormatter: valueFormatter,

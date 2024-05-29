@@ -4,7 +4,7 @@ export const Container = styled.div`
   height: 100vh;
 `;
 
-export const LoginForm = styled.div`
+export const LoginForm = styled.form`
   min-width: 300px;
   width: 45%;
   
