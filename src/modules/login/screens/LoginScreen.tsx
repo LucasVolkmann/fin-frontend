@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react';
+import React, { ChangeEvent, useEffect } from 'react';
 import { useLogin } from '../hooks/useLogin';
 import { Container, FormContainer, ImageContainer, InputBox, LoginForm } from '../styles/LoginScreen.styles';
 import { LockFilled, UserOutlined } from '@ant-design/icons';
@@ -7,6 +7,12 @@ import LoginInputPassword from '../components/LoginInputPassword';
 import LoginButton from '../components/LoginButton';
 import HelloCard from '../components/HelloCard';
 import MainContent from '../components/MainContent';
+import { getAuthorizationToken, unsetAuthorizationToken } from '../../../shared/functions/connection/auth';
+import { URL_USER } from '../../../shared/constants/Urls';
+import { connectionAPI_GET } from '../../../shared/functions/connection/connectionAPI';
+import { UserType } from '../../../shared/types/UserType';
+import { useNavigate } from 'react-router-dom';
+import { MainRoutesEnum } from '../../main/routes';
 
 const LoginScreen = () => {
   const {
@@ -18,12 +24,26 @@ const LoginScreen = () => {
     handleOnChangeLoginInput,
     handleOnClickLoginButton,
   } = useLogin();
+  const navigate = useNavigate();
 
   const handleFormKeyDown = (event: React.KeyboardEvent<HTMLFormElement>) => {
     if (event.key == 'Enter') {
       handleOnClickLoginButton();
     }
   };
+
+  useEffect(() => {
+    if (getAuthorizationToken()) {
+      connectionAPI_GET<UserType>(URL_USER)
+        .then((res) => {
+          if (res && res.id > 0) {
+            return navigate(MainRoutesEnum.MAIN);
+          }
+        }).catch(() => {
+          unsetAuthorizationToken();
+        });
+    }
+  }, []);
 
   return (
     <>

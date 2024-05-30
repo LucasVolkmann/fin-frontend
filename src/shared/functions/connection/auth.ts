@@ -39,14 +39,19 @@ export const getTokenUserData = (): UserTokenType | undefined => {
 };
 
 export const verifyLoggedIn = async () => {
-  if (!getAuthorizationToken()) {
+  const token = getAuthorizationToken();
+  
+  if (!token) {
     return redirect(LoginRoutesEnum.LOGIN);
   }
-  await connectionAPI_GET<UserType>(URL_USER)
+  const response = await connectionAPI_GET<UserType>(URL_USER)
     .catch(() => {
       unsetAuthorizationToken();
-      return redirect(LoginRoutesEnum.LOGIN);
+      return null;
     });
+  if (!response) {
+    return redirect(LoginRoutesEnum.LOGIN);
+  } 
   return null;
 };
 

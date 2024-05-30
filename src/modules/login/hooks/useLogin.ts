@@ -8,11 +8,11 @@ type InputAttribute = 'email' | 'password';
 
 export const useLogin = () => {
   const [credentials, setCredentials] = useState({
-    //FIXME:
-    // email: 'lucas@email.com',
-    // password: 'test123',
-    email: '',
-    password: '',
+    // FIXME
+    email: 'lucas@email.com',
+    password: 'test123',
+    // email: '',
+    // password: '',
   });
   const [messageApi, contextHolder] = message.useMessage();
   const [emailStatus, setEmailStatus] = useState<'error' | ''>('');
