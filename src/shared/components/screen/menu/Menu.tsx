@@ -1,5 +1,5 @@
 import { Tooltip } from 'antd';
-import { Container, IconContainer, SideMenuContainer, SpanStyle } from './Menu.styles';
+import { Container, IconContainer, LogoutButtonContainer, SideMenuOptionsContainer, SpanStyle, StyledLogoutButton } from './Menu.styles';
 import SVGIcon from '../icons/SVGIcon';
 import { useNavigate } from 'react-router-dom';
 
@@ -28,7 +28,7 @@ const Menu = ({ options, ...props }: MenuProps) => {
       <IconContainer>
         <SVGIcon />
       </IconContainer>
-      <SideMenuContainer>
+      <SideMenuOptionsContainer>
         {options.map((option, i) => {
           return  (
             <Tooltip
@@ -52,7 +52,10 @@ const Menu = ({ options, ...props }: MenuProps) => {
             </Tooltip>
           );
         })}
-      </SideMenuContainer>
+      </SideMenuOptionsContainer>
+      <LogoutButtonContainer>
+        <StyledLogoutButton />
+      </LogoutButtonContainer>
     </Container>
   );
 };

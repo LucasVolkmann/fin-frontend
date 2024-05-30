@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { MENU_WIDTH } from '../shared/constants';
+import { LogoutButton } from './components/logout-button/LogoutButton';
 
 export const Container = styled.div`
   min-height: 100vh;
@@ -29,7 +30,7 @@ export const IconContainer = styled.div`
   background-color: #8B8999;
   `;
 
-export const SideMenuContainer = styled.div`
+export const SideMenuOptionsContainer = styled.div`
   width: 60px;
   min-height: 120px;
   box-sizing: border-box;
@@ -63,4 +64,28 @@ export const SpanStyle = styled.span`
   svg {
     width: 50%;
   }
+`;
+
+export const LogoutButtonContainer = styled.div`
+  width: 60px;
+  height: 60px;
+
+  position: fixed;
+  bottom: 0px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-bottom: 26px;
+
+  border-radius: 50%;
+
+  background-color: #8B8999;
+`;
+
+export const StyledLogoutButton = styled(LogoutButton)`
+  width: 300px;
+  height: 300px;
+  border: 2px solid green;
 `;
