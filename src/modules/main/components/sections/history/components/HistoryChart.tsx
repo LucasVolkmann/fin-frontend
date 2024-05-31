@@ -49,7 +49,7 @@ const HistoryChart = ({historyLength}: HistoryChartProps) => {
   }, [historyLength, historyData]);
 
   return (
-    <div style={{width: '100%', marginTop: '15px'}}>
+    <div style={{width: '100%', maxWidth: '600px', margin: '15px auto 0px'}}>
       <BarChart
         dataset={displayData}
         xAxis={[{

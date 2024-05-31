@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useUserReducer } from '../../../store/reducers/userReducer/useUserReducer';
 import { useRequests } from '../../../shared/hooks/useRequests';
 import { URL_USER } from '../../../shared/constants/Urls';
@@ -13,6 +13,24 @@ import TransactionsListComponent from '../components/sections/transactions-list/
 const MainScreen = () => {
   const {user, setUser} = useUserReducer();
   const {request} = useRequests();
+  const [windowDimensions, setWindowDimensions] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     if(!user) {
@@ -24,14 +42,14 @@ const MainScreen = () => {
     <Screen
       currentPage={PagesEnum.DASHBOARD}
     >
-      <RootContainer>
-        <HistorySection>
+      <RootContainer style={windowDimensions.width < 1500? {justifyContent: 'center'}:{}}>
+        <HistorySection style={windowDimensions.width < 1500? {width: '80%'} : {}}>
           <HistoryComponent />
         </HistorySection>
-        <CategoriesSection>
+        <CategoriesSection style={windowDimensions.width < 1500? {width: '80%'} : {}}>
           <CategoriesComponent />
         </CategoriesSection>
-        <TransactionListSection>
+        <TransactionListSection style={windowDimensions.width < 1500? {width: '80%'} : {}}>
           <TransactionsListComponent />
         </TransactionListSection>
       </RootContainer>

@@ -6,7 +6,6 @@ import { Tooltip } from 'antd';
 export const LogoutButton = () => {
   const navigate = useNavigate();
 
-
   const handleOnClick = () => {
     logout(navigate);
   };
