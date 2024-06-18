@@ -48,10 +48,10 @@ const columns: TableProps<DisplayDataType>['columns'] = [
 const data: DisplayDataType[] = [
   {
     key: '1',
-    details: 'John Brown',
+    details: 'Fast food for lunch',
     date: new Date(),
-    amount: 11111,
-    categoryName: 'admaslk',
+    amount: 50.90,
+    categoryName: 'Food',
   },
 ];
 
@@ -64,7 +64,6 @@ const TransactionListTable = () => {
         columns={columns}
         dataSource={data}
         style={{
-          width: '700px',
           margin: '26px',
         }}
       />

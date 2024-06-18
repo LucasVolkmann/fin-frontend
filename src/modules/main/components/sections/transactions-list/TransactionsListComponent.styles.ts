@@ -16,12 +16,9 @@ export const HeaderContainerSection = styled.div`
 `;
 
 export const TransactionListContainer = styled.div`
+  width: 65%;
   border-right: 1px solid rgba(0, 0, 0, 0.1);
-  `;
+`;
 
 export const BannerContainer = styled.div`
-  flex-grow: 1;
-
-
-
 `;
