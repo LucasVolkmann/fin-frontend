@@ -1,5 +1,6 @@
 import { Table, TableProps, Tag } from 'antd';
 import { valueFormatter } from '../../../../../../shared/functions/formatters';
+import { useTransactionListTable } from './hooks/useTransactionListTable';
 
 interface DisplayDataType {
   key: string;
@@ -45,24 +46,17 @@ const columns: TableProps<DisplayDataType>['columns'] = [
   },
 ];
 
-const data: DisplayDataType[] = [
-  {
-    key: '1',
-    details: 'Fast food for lunch',
-    date: new Date(),
-    amount: 50.90,
-    categoryName: 'Food',
-  },
-];
-
 const TransactionListTable = () => {
+
+  const {displayData} = useTransactionListTable();
+
   return (
     <>
       <Table 
         pagination={false}
         size="small"
         columns={columns}
-        dataSource={data}
+        dataSource={displayData}
         style={{
           margin: '26px',
         }}
