@@ -54,7 +54,7 @@ const TransactionListTable = () => {
     <>
       <Table 
         pagination={false}
-        size="small"
+        size="large"
         columns={columns}
         dataSource={displayData}
         style={{

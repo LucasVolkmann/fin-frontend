@@ -1,6 +1,5 @@
 import { CardTitle } from '../sections.styles';
-import { BannerContainer, Container, HeaderContainerSection, TransactionListContainer } from './TransactionsListComponent.styles';
-import BannerComponent from './components/BannerComponent';
+import { Container, HeaderContainerSection, TransactionListContainer } from './TransactionsListComponent.styles';
 import TransactionListTable from './components/TransactionListTable';
 
 const TransactionsListComponent = () => {
@@ -19,9 +18,6 @@ const TransactionsListComponent = () => {
           </HeaderContainerSection>
           <TransactionListTable />
         </TransactionListContainer>
-        <BannerContainer>
-          <BannerComponent />
-        </BannerContainer>
       </Container>
     </>
   );

@@ -21,8 +21,9 @@ export const HistorySection = styled(CommonCard)`
 export const CategoriesSection = styled(CommonCard)`
   width: 57.5%;
   min-width: 800px;
-`;
+  `;
 
 export const TransactionListSection = styled(CommonCard)`
   width: 100%;
+  min-width: 800px;
 `;
