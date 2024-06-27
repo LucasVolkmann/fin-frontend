@@ -9,12 +9,6 @@ const TransactionsListComponent = () => {
         <TransactionListContainer>
           <HeaderContainerSection>
             <CardTitle>Transações do mês atual</CardTitle>
-            <select>
-              <option>Sort by</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-            </select>
           </HeaderContainerSection>
           <TransactionListTable />
         </TransactionListContainer>

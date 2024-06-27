@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { connectionAPI_GET } from '../../../../../../../shared/functions/connection/connectionAPI';
-import { URL_TRANSACTION } from '../../../../../../../shared/constants/Urls';
+import { URL_CATEGORY, URL_TRANSACTION } from '../../../../../../../shared/constants/Urls';
 import { CategoryType } from '../../../../../../../shared/types/CategoryType';
 import { TransactionType } from '../../../../../../../shared/types/TransactionType';
 
@@ -10,35 +10,12 @@ interface DisplayDataType {
   details: string;
   date: Date;
   amount: number;
-  categoryName: string;
+  category: CategoryType;
 }
 
 export const useTransactionListTable = () => {
 
   const [displayData, setDisplayData] = useState<DisplayDataType[]>([]);
-
-  const cat: CategoryType[] = [
-    {
-      id: 1,
-      name: 'eating',
-    },
-    {
-      id: 3,
-      name: 'user 1 new category',
-    },
-    {
-      id: 4,
-      name: 'test category numbers',
-    },
-    {
-      id: 5,
-      name: 'traveling',
-    },
-    {
-      id: 6,
-      name: 'learning',
-    },
-  ];
 
   useEffect(() => {
     saveData();
@@ -47,20 +24,30 @@ export const useTransactionListTable = () => {
   const saveData = async () => {
 
     const currentMonth = new Date().getMonth();
-    const response = await connectionAPI_GET<TransactionType[] | []>(`${URL_TRANSACTION}?month=${currentMonth}`);
-    
-    const handledData = response.map((transaction, i) => {
+    const transactionsResponse = await connectionAPI_GET<TransactionType[] | []>(`${URL_TRANSACTION}?month=${currentMonth}`);
+    const categoriesResponse = await connectionAPI_GET<CategoryType[]>(URL_CATEGORY);
 
-      const categoryName = cat.find((cat) => cat.id == transaction.categoryId)?.name;
-      
-      return {
-        ...transaction,
-        key: String(i),
-        categoryName: categoryName || '',
-      };
-    });
+    try {
+      const handledData = transactionsResponse.map((transaction, i) => {
 
-    setDisplayData(handledData);
+        const category = categoriesResponse.find((cat) => cat.id == transaction.categoryId);
+        
+        if (!category) {
+          throw new Error('Categoria não encontrada.');
+        }
+        return {
+          amount: transaction.amount,
+          details: transaction.details,
+          date: transaction.date,
+          key: String(i),
+          category,
+        };
+      });
+      setDisplayData(handledData);
+    } catch (error) {
+      console.error(error);
+    }
+
   };
 
   return {

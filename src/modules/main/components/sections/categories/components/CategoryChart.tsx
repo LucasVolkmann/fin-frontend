@@ -56,11 +56,6 @@ const CustomizedChart = () => {
       <PieChart
         series={[
           {
-            // data: [
-            //   { id: 0, value: 1, label: 'Viagens', color: '#FE981E' },
-            //   { id: 1, value: 1, label: 'Comidas', color: '#6FCB14' },
-            //   { id: 2, value: 1, label: 'Outros', color: '#8B8999' },
-            // ],
             data: displayChartData,
             innerRadius: 60,
             outerRadius: 110,

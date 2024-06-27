@@ -1,14 +1,25 @@
 import { Table, TableProps, Tag } from 'antd';
 import { valueFormatter } from '../../../../../../shared/functions/formatters';
 import { useTransactionListTable } from './hooks/useTransactionListTable';
+import { CategoryType } from '../../../../../../shared/types/CategoryType';
 
 interface DisplayDataType {
   key: string;
   details: string;
   date: Date;
   amount: number;
-  categoryName: string;
+  category: CategoryType;
 }
+
+const categoryColors = [
+  '#FE981E',
+  '#6FCB14',
+  '#8B8999' ,
+  '#771FFF' ,
+  '#1FB6FF' ,
+  '#B614CC' ,
+  '#CC143C' ,
+];
 
 const columns: TableProps<DisplayDataType>['columns'] = [
   {
@@ -33,16 +44,27 @@ const columns: TableProps<DisplayDataType>['columns'] = [
   },
   {
     title: 'Categoria',
-    dataIndex: 'categoryName',
+    dataIndex: 'category',
     key: 'category',
     width: '100px',
-    render: (value) => (
-      <>
-        <Tag color={'blue'}>
-          {value}
-        </Tag>
-      </>
-    ),
+    render: (value: CategoryType) => {
+      const indexByCategoryId = value.id % categoryColors.length;
+      const selectTagColor = categoryColors[indexByCategoryId];
+      return (
+        <>
+          <Tag 
+            color={selectTagColor} 
+            style={{
+              padding: '3px 7px',
+              fontSize: '14px',
+              borderRadius: '10px',
+            }}
+          >
+            {value.name.toUpperCase()}
+          </Tag>
+        </>
+      );
+    },
   },
 ];
 
@@ -54,7 +76,6 @@ const TransactionListTable = () => {
     <>
       <Table 
         pagination={false}
-        size="large"
         columns={columns}
         dataSource={displayData}
         style={{
